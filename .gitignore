@@ -1,3 +1,5 @@
+package-lock.json
+client/build
 
 # dependencies
 /node_modules
