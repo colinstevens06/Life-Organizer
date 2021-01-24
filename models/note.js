@@ -10,6 +10,10 @@ const noteSchema = new Schema({
     type: String,
     required: true
   },
+  note: {
+    type: String,
+    required: true
+  },
   lastUpdated: {
     type: Date,
     required: true
