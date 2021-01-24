@@ -1,0 +1,17 @@
+.add-new-note__btn {
+  color: #ffffff;
+  background-color: $primaryColor;
+  border: 1px solid $primaryColor;
+  border-radius: 5px;
+  text-align: center;
+  width: 75%;
+  padding: 10px;
+  margin-top: 25px;
+  transition: .5s;
+  &:hover {
+    cursor: pointer;
+    transition: .5s;
+    color: $primaryColor;
+    background-color: #ffffff;
+  }
+}

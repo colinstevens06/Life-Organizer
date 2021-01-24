@@ -1,1 +1,22 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+.add-new-note__btn {
+  color: #ffffff;
+  background-color: #E00045;
+  border: 1px solid #E00045;
+  border-radius: 5px;
+  text-align: center;
+  width: 50%;
+  padding: 10px;
+  margin-top: 25px;
+  -webkit-transition: .5s;
+  transition: .5s;
+  align-self: center;
+}
+
+.add-new-note__btn:hover {
+  cursor: pointer;
+  -webkit-transition: .5s;
+  transition: .5s;
+  color: #E00045;
+  background-color: #ffffff;
+}
+/*# sourceMappingURL=style.css.map */

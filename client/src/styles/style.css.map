@@ -1,9 +1,10 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AEAA,AAAA,kBAAkB,CAAC;EACjB,KAAK,EAAE,OAAO;EACd,gBAAgB,EDFH,OAAO;ECGpB,MAAM,EAAE,GAAG,CAAC,KAAK,CDHJ,OAAO;ECIpB,aAAa,EAAE,GAAG;EAClB,UAAU,EAAE,MAAM;EAClB,KAAK,EAAE,GAAG;EACV,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,IAAI;EAChB,UAAU,EAAE,GAAG;CAOhB;;AAhBD,AAUE,kBAVgB,AAUf,MAAM,CAAC;EACN,MAAM,EAAE,OAAO;EACf,UAAU,EAAE,GAAG;EACf,KAAK,EDbM,OAAO;ECclB,gBAAgB,EAAE,OAAO;CAC1B",
     "sources": [
         "style.scss",
-        "_color-palette.scss"
+        "_color-palette.scss",
+        "global/_buttons.scss"
     ],
     "names": [],
     "file": "style.css"

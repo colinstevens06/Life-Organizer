@@ -1,8 +1,4 @@
-import './App.css';
-
 import CreateNoteBtn from "./components/CreateNoteBtn"
-
-
 
 function App() {
   return (
