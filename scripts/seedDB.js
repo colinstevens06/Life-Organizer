@@ -3,7 +3,7 @@ const db = require("../models")
 
 mongoose.connect(
   process.env.MONGDB_URI ||
-  "mongdb://localhost/lifeOrganizer",
+  "mongodb://localhost/lifeOrganizer",
   { useNewUrlParser: true, useUnifiedTopology: true, 'useFindAndModify': false }
 )
 
@@ -29,16 +29,16 @@ const notesSeed = [
   {
     name: "Backyard Vegetable Garden",
     category: "planning",
-    note: "Things I want to plant in my summer garden: kale, cherry tomatoes, tomatoes, lettuce, carrots, beets, ",
+    note: "Things I want to plant in my summer garden: kale, cherry tomatoes, tomatoes, lettuce, carrots, beets",
     lastUpdated: "2021-01-02"
   }
 ];
 
 db.Note
   .deleteMany({})
-  .then(() => DataView.Note.collection.insertMany(notesSeed))
+  .then(() => db.Note.collection.insertMany(notesSeed))
   .then(data => {
-    console.log(data.results.n + " records inserted!")
+    console.log(data.result.n + " records inserted!")
     process.exit(0)
   })
   .catch(err => {
