@@ -6,7 +6,7 @@ const notesController = require("../../controllers/notesController")
 router.route("/")
   .get(notesController.findAll)
 
-router.route("/:id")
-  .get(notesController.findById)
+// router.route("/:id")
+//   .get(notesController.findById)
 
 module.exports = router;
