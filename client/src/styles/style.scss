@@ -2,6 +2,21 @@
 
 
 
+.container_notes-list {
+  width: 75%;
+  margin: 25px auto;
+  padding: 20px 0;
 
 
-@import './global/buttons'
+
+
+  // border: 1px solid black;
+  
+}
+
+
+
+
+@import './global/buttons';
+@import './global/text';
+@import './main-view/grid';

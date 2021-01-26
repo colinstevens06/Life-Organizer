@@ -1,15 +1,23 @@
+.container_notes-list {
+  width: 75%;
+  margin: 25px auto;
+  padding: 20px 0;
+}
+
 .add-new-note__btn {
   color: #ffffff;
   background-color: #E00045;
   border: 1px solid #E00045;
   border-radius: 5px;
   text-align: center;
-  width: 50%;
-  padding: 10px;
+  width: 75%;
+  padding: 20px 0;
   margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
   -webkit-transition: .5s;
   transition: .5s;
-  align-self: center;
+  font-size: 1.5rem;
 }
 
 .add-new-note__btn:hover {
@@ -18,5 +26,48 @@
   transition: .5s;
   color: #E00045;
   background-color: #ffffff;
+}
+
+.header_notes-list {
+  font-size: 1.75rem;
+  font-weight: 800;
+  padding-left: 15px;
+}
+
+.header__sortable-lists {
+  font-size: 1.5rem;
+  color: #474747;
+  padding-left: 15px;
+}
+
+.notes-list-results {
+  font-size: 1.25rem;
+  line-height: 2.5rem;
+  border-bottom: 1px solid #b9b9b9;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.notes-list-results:hover {
+  cursor: pointer;
+  background-color: #ffb5c1;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.notes-list-results div {
+  padding-left: 15px;
+}
+
+.notes-list-results .result_category {
+  text-transform: capitalize;
+}
+
+.row_notes-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 25% 25%;
+      grid-template-columns: 50% 25% 25%;
+  gap: 10px;
 }
 /*# sourceMappingURL=style.css.map */
