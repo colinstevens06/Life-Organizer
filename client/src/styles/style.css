@@ -70,4 +70,17 @@
       grid-template-columns: 50% 25% 25%;
   gap: 10px;
 }
+
+.container_modal {
+  min-width: 600px;
+  padding: 12px 24px;
+}
+
+.container_modal input {
+  width: 100%;
+}
+
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
 /*# sourceMappingURL=style.css.map */

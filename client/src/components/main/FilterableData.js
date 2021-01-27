@@ -39,7 +39,7 @@ function FilterableData(props) {
         <div className="header__sortable-lists">Last Modified</div>
         <div className="header__sortable-lists">Category</div>
       </div>
-      <hr />
+      <hr style={{ marginBlockEnd: 0 }} />
       {allNotes &&
 
         allNotes.map(note => (
