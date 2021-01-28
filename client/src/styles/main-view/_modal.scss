@@ -3,9 +3,42 @@
   padding: 12px 24px;
   input {
     width: 100%;
+    margin-bottom: 5px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 }
 
 .ReactModal__Overlay {
   background-color: rgba(0,0,0,0.5) !important;
+}
+
+/* Modal Form */
+
+
+.row_new-note-form-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 25px;
+
+  div {
+    transition: .5s;
+    width: 200px;
+    background-color: $primaryColor;
+    border: 1px solid $primaryColor;
+    color: $primaryColorText;
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-align: center;
+    padding: 12px 24px;
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
+      transition: .5s;
+      background-color: #ffffff;
+      color: $primaryColor;
+    }
+  }
+
 }

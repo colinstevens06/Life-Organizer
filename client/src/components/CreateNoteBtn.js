@@ -33,6 +33,7 @@ export default function CreateNoteBtn() {
       <Modal
         isOpen={modalIsOpen}
         style={customStyles}
+        ariaHideApp={false}
       >
         <div className="container_modal">
 
@@ -42,8 +43,8 @@ export default function CreateNoteBtn() {
           <br />
           <input />
           <div className="row_new-note-form-buttons">
-            <div className="btn_new-note-form-buttons">Save</div>
-            <div className="btn_new-note-form-buttons" onClick={closeModal}>Cancel</div>
+            <div>Save</div>
+            <div onClick={closeModal}>Cancel</div>
 
           </div>
 
