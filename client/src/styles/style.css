@@ -78,11 +78,17 @@
 
 .container_modal input {
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  padding: 4px 6px;
+  font-size: 1.25rem;
 }
 
-.container_modal input:last-of-type {
-  margin-bottom: 0;
+.container_modal .input_note {
+  height: 100px;
+  width: 100%;
+  padding: 4px 6px;
+  font-size: 1.25rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 .ReactModal__Overlay {
@@ -97,7 +103,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  margin-top: 25px;
+  margin-top: 10px;
 }
 
 .row_new-note-form-buttons div {

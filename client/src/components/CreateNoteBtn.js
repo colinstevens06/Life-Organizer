@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import API from '../utils/API'
-import { Input } from './Form'
+import { Input, TextArea } from './Form'
 
 
 // import API from '../utils/API'
@@ -24,12 +24,18 @@ export default function CreateNoteBtn() {
     setFormObject({ ...formObject, [name]: value })
   }
 
+  function clearInputs() {
+    setFormObject({})
+
+  }
+
   function saveNote() {
     API.addNote({
       name: formObject.name,
       category: formObject.category,
       note: formObject.note
     })
+      .then(clearInputs())
       .catch(err => console.log(err))
 
   }
@@ -62,16 +68,20 @@ export default function CreateNoteBtn() {
             <Input
               onChange={handleInputChange}
               name="name"
+              placeholder="Name your note"
             />
             <Input
               onChange={handleInputChange}
               name="category"
+              placeholder="Give it a category"
 
             />
-            <Input
+            <TextArea
               onChange={handleInputChange}
               name="note"
               rows="20"
+              className="input_note"
+              placeholder="Write your note here"
 
             />
             <div className="row_new-note-form-buttons">
