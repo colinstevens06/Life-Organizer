@@ -5,6 +5,7 @@ const notesController = require("../../controllers/notesController")
 
 router.route("/")
   .get(notesController.findAll)
+  .post(notesController.addOne)
 
 // router.route("/:id")
 //   .get(notesController.findById)

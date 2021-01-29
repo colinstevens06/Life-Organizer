@@ -9,5 +9,12 @@ module.exports = {
       .find(req.query)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
+  },
+
+  addOne: function (req, res) {
+    db.Note
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
   }
 }

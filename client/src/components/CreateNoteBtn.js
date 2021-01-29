@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 
+// import API from '../utils/API'
+
 export default function CreateNoteBtn() {
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -12,6 +14,14 @@ export default function CreateNoteBtn() {
   function closeModal() {
     setModalIsOpen(false)
   }
+
+  // function saveNote(input) {
+  //   if (input) {
+  //     let newInput = [...input]
+  //     console.log(newInput)
+
+  //   }
+  // }
 
   const customStyles = {
     content: {
