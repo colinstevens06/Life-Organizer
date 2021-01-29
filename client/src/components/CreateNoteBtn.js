@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal'
+import API from '../utils/API'
+import { Input } from './Form'
+
 
 // import API from '../utils/API'
 
 export default function CreateNoteBtn() {
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [formObject, setFormObject] = useState({})
 
   function openModal() {
     setModalIsOpen(true)
@@ -15,13 +19,21 @@ export default function CreateNoteBtn() {
     setModalIsOpen(false)
   }
 
-  // function saveNote(input) {
-  //   if (input) {
-  //     let newInput = [...input]
-  //     console.log(newInput)
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value })
+  }
 
-  //   }
-  // }
+  function saveNote() {
+    API.addNote({
+      name: formObject.name,
+      category: formObject.category,
+      note: formObject.note
+    })
+      .catch(err => console.log(err))
+
+  }
+
 
   const customStyles = {
     content: {
@@ -46,17 +58,31 @@ export default function CreateNoteBtn() {
         ariaHideApp={false}
       >
         <div className="container_modal">
+          <form>
+            <Input
+              onChange={handleInputChange}
+              name="name"
+            />
+            <Input
+              onChange={handleInputChange}
+              name="category"
 
-          <input />
-          <br />
-          <input />
-          <br />
-          <input />
-          <div className="row_new-note-form-buttons">
-            <div>Save</div>
-            <div onClick={closeModal}>Cancel</div>
+            />
+            <Input
+              onChange={handleInputChange}
+              name="note"
+              rows="20"
 
-          </div>
+            />
+            <div className="row_new-note-form-buttons">
+              <div
+                onClick={saveNote}
+                disabled={!formObject.name && !formObject.category}
+              >Save</div>
+              <div onClick={closeModal}>Cancel</div>
+            </div>
+
+          </form>
 
 
 
