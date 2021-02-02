@@ -1,11 +1,16 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
 
 export default function DataRow(props) {
   return (
-    <div className="row_notes-list notes-list-results">
+    <Link
+      to={"/notes/" + props.id}
+      className="row_notes-list notes-list-results"
+    >
       <div>{props.name}</div>
       <div>{props.date}</div>
       <div className="result_category">{props.category}</div>
-    </div>
+    </Link>
   )
 }

@@ -7,7 +7,7 @@ router.route("/")
   .get(notesController.findAll)
   .post(notesController.addOne)
 
-// router.route("/:id")
-//   .get(notesController.findById)
+router.route("/:id")
+  .get(notesController.findById)
 
 module.exports = router;

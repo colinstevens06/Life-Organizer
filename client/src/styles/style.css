@@ -4,6 +4,12 @@
   padding: 20px 0;
 }
 
+a:-webkit-any-link {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .add-new-note__btn {
   color: #ffffff;
   background-color: #E00045;
@@ -38,6 +44,36 @@
   font-size: 1.5rem;
   color: #474747;
   padding-left: 15px;
+}
+
+.header__single-note {
+  font-size: 2rem;
+  color: #474747;
+  padding-left: 15px;
+}
+
+.subheader__single-note {
+  font-size: 1.5rem;
+  color: #474747;
+  padding: 15px;
+  border-bottom: 1px solid #474747;
+  margin-bottom: 15px;
+}
+
+.text__single-note {
+  font-size: 1.25rem;
+  padding-left: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  height: 450px;
+  border-color: transparent;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.text__single-note:hover {
+  border-color: #b9b9b9;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .notes-list-results {
@@ -126,5 +162,17 @@
   transition: .5s;
   background-color: #ffffff;
   color: #E00045;
+}
+
+.container_single-note-main-window {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 200px auto;
+      grid-template-columns: 200px auto;
+}
+
+.form_update-note {
+  width: 100%;
+  margin-right: 15px;
 }
 /*# sourceMappingURL=style.css.map */

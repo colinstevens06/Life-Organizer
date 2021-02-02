@@ -13,6 +13,37 @@
 
 }
 
+.header__single-note {
+  font-size: 2rem;
+  color: #474747;
+  padding-left: 15px;
+}
+
+.subheader__single-note {
+  font-size: 1.5rem;
+  color: #474747;
+  padding: 15px;
+  border-bottom: 1px solid #474747;
+  margin-bottom: 15px;
+}
+
+.text__single-note {
+  font-size: 1.25rem;
+  padding-left: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  height: 450px;
+  border-color: transparent;
+  transition: .5s;
+  &:hover {
+    border-color: #b9b9b9;
+    transition: .5s;
+  }
+
+
+}
+
 .notes-list-results {
   font-size: 1.25rem;
   line-height: 2.5rem;

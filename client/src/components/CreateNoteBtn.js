@@ -3,15 +3,12 @@ import Modal from 'react-modal'
 import API from '../utils/API'
 import { Input, TextArea } from './Form'
 
-
-
 // import API from '../utils/API'
 
 export default function CreateNoteBtn(props) {
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [formObject, setFormObject] = useState({})
-  const [formRefresh, setFormRefresh] = useState(undefined)
 
   function openModal() {
     setModalIsOpen(true)
@@ -39,6 +36,7 @@ export default function CreateNoteBtn(props) {
   function saveNote() {
     addToDb()
     clearInputs()
+
     if (props.dbRefreshVariant === false) {
       props.dbRefreshTrigger(true)
     } else (
@@ -56,12 +54,7 @@ export default function CreateNoteBtn(props) {
       .catch(err => console.log(err))
   }
 
-  function dbRefresh() {
-    if (formRefresh === undefined) {
-      setFormRefresh(true)
-      props.dbRefreshTrigger = true
-    }
-  }
+
 
 
   const customStyles = {

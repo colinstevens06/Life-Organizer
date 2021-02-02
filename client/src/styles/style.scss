@@ -5,13 +5,13 @@
 .container_notes-list {
   width: 75%;
   margin: 25px auto;
-  padding: 20px 0;
+  padding: 20px 0;  
+}
 
-
-
-
-  // border: 1px solid black;
-  
+a:-webkit-any-link {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 
@@ -21,3 +21,4 @@
 @import './global/text';
 @import './main-view/grid';
 @import './main-view/modal';
+@import './single-note-view/single-note';
