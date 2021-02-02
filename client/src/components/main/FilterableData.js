@@ -11,6 +11,10 @@ function FilterableData(props) {
   }, [])
 
   useEffect(() => {
+    getAPI()
+  }, [props.dbRefreshTrigger])
+
+  useEffect(() => {
     if (allNotes !== undefined) {
       console.log("allNotes")
       console.log(allNotes)

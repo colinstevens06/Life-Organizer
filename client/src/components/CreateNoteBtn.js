@@ -4,12 +4,14 @@ import API from '../utils/API'
 import { Input, TextArea } from './Form'
 
 
+
 // import API from '../utils/API'
 
-export default function CreateNoteBtn() {
+export default function CreateNoteBtn(props) {
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [formObject, setFormObject] = useState({})
+  const [formRefresh, setFormRefresh] = useState(undefined)
 
   function openModal() {
     setModalIsOpen(true)
@@ -25,19 +27,40 @@ export default function CreateNoteBtn() {
   }
 
   function clearInputs() {
+    console.log("********** formObject BEFORE")
+    console.log(formObject)
     setFormObject({})
+    console.log("********** formObject AFTER")
+    console.log(formObject)
+    setModalIsOpen(false)
 
   }
 
   function saveNote() {
+    addToDb()
+    clearInputs()
+    if (props.dbRefreshVariant === false) {
+      props.dbRefreshTrigger(true)
+    } else (
+      props.dbRefreshTrigger(false)
+    )
+  }
+
+  function addToDb() {
     API.addNote({
       name: formObject.name,
       category: formObject.category,
       note: formObject.note
     })
-      .then(clearInputs())
-      .catch(err => console.log(err))
 
+      .catch(err => console.log(err))
+  }
+
+  function dbRefresh() {
+    if (formRefresh === undefined) {
+      setFormRefresh(true)
+      props.dbRefreshTrigger = true
+    }
   }
 
 
@@ -68,17 +91,20 @@ export default function CreateNoteBtn() {
             <Input
               onChange={handleInputChange}
               name="name"
+              id="name"
               placeholder="Name your note"
             />
             <Input
               onChange={handleInputChange}
               name="category"
+              id="category"
               placeholder="Give it a category"
 
             />
             <TextArea
               onChange={handleInputChange}
               name="note"
+              id="note"
               rows="20"
               className="input_note"
               placeholder="Write your note here"
