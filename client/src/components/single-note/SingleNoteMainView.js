@@ -7,8 +7,6 @@ import API from '../../utils/API';
 export default function SingleNoteMainView(props) {
   const [formObject, setFormObject] = useState({})
 
-
-
   useEffect(() => {
     setFormObject(props.noteObject)
     console.log(formObject)
@@ -33,6 +31,10 @@ export default function SingleNoteMainView(props) {
     })
   }
 
+  function deleteNote() {
+    API.deleteNote(formObject._id)
+  }
+
 
 
   return (
@@ -43,7 +45,7 @@ export default function SingleNoteMainView(props) {
         <hr />
         <div className="container__update-buttons">
           <div onClick={updateNoteObject}>Save</div>
-          <div>Delete</div>
+          <div onClick={deleteNote}>Delete</div>
           <Link to={"/"}>Cancel</Link>
         </div>
         <textarea value={formObject.note} onChange={handleInputChange} className="text__single-note form_update-note" name="note" />

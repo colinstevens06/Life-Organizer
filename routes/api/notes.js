@@ -10,5 +10,6 @@ router.route("/")
 router.route("/:id")
   .get(notesController.findById)
   .put(notesController.updateOne)
+  .delete(notesController.deleteOne)
 
 module.exports = router;

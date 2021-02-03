@@ -15,6 +15,10 @@ const API = {
 
   updateNote: function (id, note) {
     return axios.put("/api/notes/" + id, note)
+  },
+
+  deleteNote: function (id) {
+    return axios.delete("/api/notes/" + id)
   }
 }
 

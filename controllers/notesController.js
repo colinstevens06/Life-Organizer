@@ -28,8 +28,15 @@ module.exports = {
   updateOne: function (req, res) {
     db.Note
       .findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
-      .then(console.log(req.body))
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
+  },
+
+  deleteOne: function (req, res) {
+    db.Note
+      .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 }
