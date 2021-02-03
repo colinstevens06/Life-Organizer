@@ -23,5 +23,13 @@ module.exports = {
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
+  },
+
+  updateOne: function (req, res) {
+    db.Note
+      .findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+      .then(console.log(req.body))
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
   }
 }

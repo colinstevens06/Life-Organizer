@@ -1,29 +1,52 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from "react-router-dom";
+import API from '../../utils/API';
 
 
 
 export default function SingleNoteMainView(props) {
-  const [noteValue, setNoteValue] = useState(undefined)
+  const [formObject, setFormObject] = useState({})
+
 
 
   useEffect(() => {
-    setNoteValue(props.noteObject.note)
-    console.log("props.noteObject.note")
-    console.log(props.noteObject.note)
-  }, [props.noteObject.note])
+    setFormObject(props.noteObject)
+    console.log(formObject)
 
-  const handleChange = (event) => {
-    setNoteValue(event.target.value)
+  }, [props.noteObject])
+
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value })
+  }
+
+  function updateNoteObject() {
+    updateDB()
+  }
+
+  function updateDB() {
+    API.updateNote(formObject._id, {
+      name: formObject.name,
+      category: formObject.category,
+      note: formObject.note
+    })
   }
 
 
 
   return (
     <div>
-      <div className="header__single-note">{props.noteObject.name}</div>
-      <div className="subheader__single-note">{props.noteObject.category}</div>
       <form>
-        <textarea value={noteValue} onChange={handleChange} className="text__single-note form_update-note" />
+        <input value={formObject.name} onChange={handleInputChange} className="header__single-note" name="name" />
+        <input value={formObject.category} onChange={handleInputChange} className="subheader__single-note" name="category" />
+        <hr />
+        <div className="container__update-buttons">
+          <div onClick={updateNoteObject}>Save</div>
+          <div>Delete</div>
+          <Link to={"/"}>Cancel</Link>
+        </div>
+        <textarea value={formObject.note} onChange={handleInputChange} className="text__single-note form_update-note" name="note" />
       </form>
     </div>
   )

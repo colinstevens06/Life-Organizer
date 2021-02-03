@@ -9,5 +9,6 @@ router.route("/")
 
 router.route("/:id")
   .get(notesController.findById)
+  .put(notesController.updateOne)
 
 module.exports = router;
