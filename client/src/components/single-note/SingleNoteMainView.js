@@ -41,14 +41,16 @@ export default function SingleNoteMainView(props) {
   return (
     <div>
       <form>
-        <input value={formObject.name} onChange={handleInputChange} className="header__single-note" name="name" />
-        <input value={formObject.category} onChange={handleInputChange} className="subheader__single-note" name="category" />
-        <hr />
         <div className="container__update-buttons">
           <div onClick={updateNoteObject}>Save</div>
           <div onClick={deleteNote}>Delete</div>
           <Link to={"/"}>Cancel</Link>
         </div>
+        <hr />
+        <input value={formObject.name} onChange={handleInputChange} className="header__single-note" name="name" />
+        <input value={formObject.category} onChange={handleInputChange} className="subheader__single-note" name="category" />
+        <hr />
+
         <textarea value={formObject.note} onChange={handleInputChange} className="text__single-note form_update-note" name="note" />
       </form>
     </div>

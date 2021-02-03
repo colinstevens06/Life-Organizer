@@ -4,14 +4,16 @@
 }
 
 .container__update-buttons {
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
   margin-bottom: 15px;
   padding-left: 15px;
 
   div {
     padding: 6px 8px;
+    width: 100px;
     text-align: center;
     transition: .5s;
     &:hover {
@@ -20,9 +22,10 @@
       background-color: $primaryColorLight;
     }
   }
-
+  
   a {
     padding: 6px 8px;
+    width: 100px;
     text-align: center;
     transition: .5s;
     &:hover {
@@ -38,3 +41,22 @@
   margin-right: 15px;
 }
 
+.container__single-note-left-col {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #dcdcdc;
+  margin-right: 10px;
+}
+
+.row__left-column-list {
+  width: 100%;
+  padding: 6px 0px;
+  font-size: 0.8rem;
+  transition: .5s;
+  border-bottom: 1px solid #dcdcdc;
+  &:hover {
+    cursor: pointer;
+    transition: .5s;
+    background-color: $primaryColorLight;
+  }
+}

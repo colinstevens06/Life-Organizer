@@ -67,7 +67,6 @@ a:-webkit-any-link {
   color: #474747;
   padding: 15px;
   border-bottom: 1px solid #474747;
-  margin-bottom: 15px;
   border-color: transparent;
   -webkit-transition: .5s;
   transition: .5s;
@@ -192,17 +191,24 @@ a:-webkit-any-link {
 }
 
 .container__update-buttons {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 33% 33% 33%;
-      grid-template-columns: 33% 33% 33%;
-  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
   margin-bottom: 15px;
   padding-left: 15px;
 }
 
 .container__update-buttons div {
   padding: 6px 8px;
+  width: 100px;
   text-align: center;
   -webkit-transition: .5s;
   transition: .5s;
@@ -217,6 +223,7 @@ a:-webkit-any-link {
 
 .container__update-buttons a {
   padding: 6px 8px;
+  width: 100px;
   text-align: center;
   -webkit-transition: .5s;
   transition: .5s;
@@ -232,5 +239,33 @@ a:-webkit-any-link {
 .form_update-note {
   width: 100%;
   margin-right: 15px;
+}
+
+.container__single-note-left-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-right: 1px solid #dcdcdc;
+  margin-right: 10px;
+}
+
+.row__left-column-list {
+  width: 100%;
+  padding: 6px 0px;
+  font-size: 0.8rem;
+  -webkit-transition: .5s;
+  transition: .5s;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.row__left-column-list:hover {
+  cursor: pointer;
+  -webkit-transition: .5s;
+  transition: .5s;
+  background-color: #ffb5c1;
 }
 /*# sourceMappingURL=style.css.map */
