@@ -32,7 +32,8 @@ export default function SingleNoteMainView(props) {
   }
 
   function deleteNote() {
-    API.deleteNote(formObject._id)
+    API.deleteNote(formObject._id);
+    window.location.href = "/"
   }
 
 

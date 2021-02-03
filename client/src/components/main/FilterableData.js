@@ -14,19 +14,9 @@ function FilterableData(props) {
     getAPI()
   }, [props.dbRefreshTrigger])
 
-  useEffect(() => {
-    if (allNotes !== undefined) {
-      console.log("allNotes")
-      console.log(allNotes)
-    }
-  }, [allNotes])
-
-
-
   const getAPI = () => {
     API.getNotes()
       .then(res => {
-        console.log("about to setAllNotes in getAPI")
         setAllNotes(res.data)
       })
       .catch(err => console.log(err))

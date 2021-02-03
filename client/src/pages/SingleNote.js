@@ -15,7 +15,7 @@ export default function SingleNote() {
     API.getNote(id)
       .then(res => setNote(res.data))
       .catch(err => console.log(err))
-  }, [])
+  }, [id])
 
 
 
@@ -24,11 +24,9 @@ export default function SingleNote() {
       <CreateNoteBtn />
       <div className="container_single-note-main-window container_notes-list">
 
-        <SingleNoteLeftCol
-        />
+        <SingleNoteLeftCol />
         <SingleNoteMainView
           noteObject={note}
-
         />
       </div>
 
