@@ -9,6 +9,8 @@ function Main() {
   const [dbRefreshVariant, setDbRefreshVariant] = useState(false)
 
   const dbRefresh = input => {
+    console.log("input on main")
+    console.log(input)
     setDbRefreshVariant(input)
   }
 

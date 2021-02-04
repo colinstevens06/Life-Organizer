@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import DataRow from "./DataRow"
+// import DataRow from "./DataRow"
 
 import API from "../../utils/API";
+import DataRowContainer from "./DataRowContainer";
 
 function FilterableData(props) {
   const [allNotes, setAllNotes] = useState(undefined)
@@ -12,7 +13,7 @@ function FilterableData(props) {
 
   useEffect(() => {
     getAPI()
-  }, [props.dbRefreshTrigger])
+  }, [props.dbRefreshTrigger, allNotes])
 
   const getAPI = () => {
     API.getNotes()
@@ -34,8 +35,12 @@ function FilterableData(props) {
         <div className="header__sortable-lists">Category</div>
       </div>
       <hr style={{ marginBlockEnd: 0 }} />
-      {allNotes &&
 
+      <DataRowContainer
+        allNotes={allNotes}
+      />
+
+      {/* {allNotes &&
         allNotes.map(note => (
           <DataRow
             key={note._id}
@@ -44,12 +49,10 @@ function FilterableData(props) {
             category={note.category}
             date={note.lastUpdated.slice(0, 10)}
           />
-        )
+        ))
+      } */}
 
-        )
 
-
-      }
     </div>
   )
 

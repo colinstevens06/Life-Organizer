@@ -23,25 +23,10 @@ export default function CreateNoteBtn(props) {
     setFormObject({ ...formObject, [name]: value })
   }
 
-  function clearInputs() {
-    console.log("********** formObject BEFORE")
-    console.log(formObject)
-    setFormObject({})
-    console.log("********** formObject AFTER")
-    console.log(formObject)
-    setModalIsOpen(false)
-
-  }
 
   function saveNote() {
     addToDb()
-    clearInputs()
-
-    if (props.dbRefreshVariant === false) {
-      props.dbRefreshTrigger(true)
-    } else (
-      props.dbRefreshTrigger(false)
-    )
+    setModalIsOpen(false)
   }
 
   function addToDb() {
@@ -50,7 +35,9 @@ export default function CreateNoteBtn(props) {
       category: formObject.category,
       note: formObject.note
     })
-
+      .then(
+        props.dbRefreshTrigger(!props.dbRefreshVariant)
+      )
       .catch(err => console.log(err))
   }
 
