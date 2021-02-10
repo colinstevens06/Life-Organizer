@@ -40,7 +40,7 @@ function App() {
           : (
             <>
               <Switch>
-                <Route exact path="/">
+                <Route exact path={["/", "/new-user"]}>
                   <Main />
                 </Route>
                 <Route exact path="/notes/:id">
