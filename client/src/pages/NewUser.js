@@ -14,24 +14,24 @@ export default function Login() {
 
 
 
-    fire.auth().signInWithEmailAndPassword(email, password)
-      .catch((error) => {
-        console.error('Incorrect username or password')
-      })
+    //   fire.auth().signInWithEmailAndPassword(email, password)
+    //     .catch((error) => {
+    //       console.error('Incorrect username or password')
+    //     })
   }
 
 
 
   return (
     <div className="container_form-login_newUser">
-      <h1>Log In</h1>
+      <h1>Create Account</h1>
 
       <form onSubmit={handleSubmit} className="form-login_newUser">
         <input type="text" onChange={({ target }) => setEmail(target.value)} placeholder="Email" />
         <input type="password" onChange={({ target }) => setPassword(target.value)} placeholder="Password" />
         <div className="container-buttons_form-login_newUser">
-          <button type="submit">Log In</button>
-          <Link to="/new-user" className="button_form-login_newUser">Create Account</Link>
+          <button type="submit">Create Account</button>
+          <Link to="/" className="button_form-login_newUser">Log In</Link>
         </div>
       </form>
     </div>

@@ -1,0 +1,66 @@
+.container_form-login_newUser {
+  width: 50%;
+  min-width: 500px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  background-color: $primaryColorLight;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10%;
+  padding: 25px 15px;
+  border-radius: 5px;
+
+  h1 {
+    align-self: center;
+    width: 400px;
+    text-align: center;
+  }
+}
+
+.container-buttons_form-login_newUser {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  }
+
+.form-login_newUser {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  width: 75%;
+  min-width: 300px;
+  margin: auto;
+
+  input {
+    width: 100%;
+    padding: 6px 8px;
+    margin-bottom: 15px;
+    font-family: $primaryFontFamily;
+    font-size: 1.25rem;
+  }
+
+  button, .button_form-login_newUser {
+    width: 45%;
+    padding: 6px 8px;
+    font-family: $primaryFontFamily;
+    text-align: center;
+    align-self: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(0, 0, 0, .85);
+    border-radius: 5px;
+    font-size: 1.25rem;
+    border-width: 2px;
+    border-color: $primaryColorDark;
+    border-style: outset;
+    transition: .5s;
+    &:hover {
+      cursor: pointer;
+      transition: .5s;
+      background-color: $primaryColor;
+      color: rgba(255, 255, 255, 0.95);
+      border-color: $primaryColorDark;
+    }
+  }
+
+}

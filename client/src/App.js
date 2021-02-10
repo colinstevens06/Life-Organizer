@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Login from './pages/Login'
+import NewUser from './pages/NewUser'
 
 // Importing Pages
 import Main from "./pages/Main"
@@ -27,8 +28,11 @@ function App() {
           ? (
             <>
               <Switch>
-                <Route path="/">
+                <Route exact path="/">
                   <Login />
+                </Route>
+                <Route exact path="/new-user">
+                  <NewUser />
                 </Route>
               </Switch>
             </>

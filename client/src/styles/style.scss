@@ -1,6 +1,8 @@
 @import './variables';
 
-
+* {
+  box-sizing: border-box;
+}
 
 .container_notes-list {
   width: 75%;
@@ -22,3 +24,4 @@ a:-webkit-any-link {
 @import './main-view/grid';
 @import './main-view/modal';
 @import './single-note-view/single-note';
+@import './login_newUser/login_newUser';
