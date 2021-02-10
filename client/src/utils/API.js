@@ -1,5 +1,21 @@
 import axios from "axios"
 
+import fire from './fire'
+
+// const createToken = async () => {
+//   const user = fire.auth().currentUser
+//   const token = user && (await user.getIdToken())
+
+//   const payloadHeader = {
+//     header: {
+//       'Content-Type': 'application/jason',
+//       Authorization: 'Bearer ' + token,
+//     }
+//   }
+
+//   return payloadHeader
+// }
+
 const API = {
   getNotes: function () {
     return axios.get("/api/notes")
@@ -19,7 +35,22 @@ const API = {
 
   deleteNote: function (id) {
     return axios.delete("/api/notes/" + id)
+  },
+
+  createToken: async () => {
+    const user = fire.auth().currentUser
+    const token = user && (await user.getIdToken())
+
+    const payloadHeader = {
+      header: {
+        'Content-Type': 'application/jason',
+        Authorization: 'Bearer ' + token,
+      }
+    }
+
+    return payloadHeader
   }
+
 }
 
-export default API
+export default API;
