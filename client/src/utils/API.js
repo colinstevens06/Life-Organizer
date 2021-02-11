@@ -29,6 +29,8 @@ const API = {
     return axios.post("/api/notes", note)
   },
 
+  
+
   updateNote: function (id, note) {
     return axios.put("/api/notes/" + id, note)
   },

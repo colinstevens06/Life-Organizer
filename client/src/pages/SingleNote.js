@@ -25,9 +25,12 @@ export default function SingleNote() {
       <div className="container_single-note-main-window container_notes-list">
 
         <SingleNoteLeftCol />
-        <SingleNoteMainView
-          noteObject={note}
-        />
+        {note &&
+          <SingleNoteMainView
+            noteObject={note}
+          />
+
+        }
       </div>
 
 

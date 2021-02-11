@@ -28,7 +28,6 @@ export default function SingleNoteLeftCol() {
             key={note._id}
             id={note._id}
             name={note.name}
-
           />
 
         ))

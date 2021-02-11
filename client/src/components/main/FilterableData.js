@@ -11,14 +11,15 @@ function FilterableData(props) {
     getAPI()
   }, [])
 
-  useEffect(() => {
-    getAPI()
-  }, [props.dbRefreshTrigger, allNotes])
+  // useEffect(() => {
+  //   getAPI()
+  // }, [props.dbRefreshTrigger, allNotes])
 
   const getAPI = () => {
     API.getNotes()
       .then(res => {
         setAllNotes(res.data)
+        console.log(allNotes)
       })
       .catch(err => console.log(err))
   }
@@ -36,9 +37,9 @@ function FilterableData(props) {
       </div>
       <hr style={{ marginBlockEnd: 0 }} />
 
-      <DataRowContainer
+      {/* <DataRowContainer
         allNotes={allNotes}
-      />
+      /> */}
 
       {/* {allNotes &&
         allNotes.map(note => (

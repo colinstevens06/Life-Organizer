@@ -4,20 +4,15 @@ const Schema = mongoose.Schema;
 const noteSchema = new Schema({
   name: {
     type: String,
-    required: true,
-    minLength: 1,
-    trim: true,
-    unique: true
+    required: true
   },
   category: {
     type: String,
-    required: true,
-    trim: true
+    required: true
   },
   note: {
     type: String,
-    required: true,
-    trim: true
+    required: true
   },
   lastUpdated: {
     type: Date,
@@ -25,7 +20,17 @@ const noteSchema = new Schema({
   }
 })
 
+const userSchema = new Schema({
+  email: {
+    type: String
+  },
+  fireID: {
+    type: String
+  },
+  notes: [noteSchema]
+})
 
-const Note = mongoose.model("Note", noteSchema)
+
+const Note = mongoose.model("Note", userSchema)
 
 module.exports = Note;
