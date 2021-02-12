@@ -18,6 +18,13 @@ module.exports = {
       .catch(err => res.status(422).json(err))
   },
 
+  findByUID: function (req, res) {
+    db.Note
+      .findOne({ fireID: req.params.id })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
+  },
+
   addOne: function (req, res) {
     db.Note
       .create(req.body)

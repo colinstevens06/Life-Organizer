@@ -8,7 +8,8 @@ router.route("/")
   .post(notesController.addOne)
 
 router.route("/:id")
-  .get(notesController.findById)
+  // .get(notesController.findById)
+  .get(notesController.findByUID)
   .put(notesController.updateOne)
   .delete(notesController.deleteOne)
 

@@ -37,9 +37,9 @@ function FilterableData(props) {
       </div>
       <hr style={{ marginBlockEnd: 0 }} />
 
-      {/* <DataRowContainer
-        allNotes={allNotes}
-      /> */}
+      <DataRowContainer
+        allNotes={props.userNotes}
+      />
 
       {/* {allNotes &&
         allNotes.map(note => (

@@ -6,7 +6,7 @@ export default function DataRow(props) {
   return (
     <Link
       to={"/notes/" + props.id}
-      className="row_notes-list notes-list-results"
+      className="row_notes-list notes-list-results" key={props.key}
     >
       <div>{props.name}</div>
       <div>{props.date}</div>

@@ -25,11 +25,13 @@ const API = {
     return axios.get("/api/notes/" + id)
   },
 
+  getUser: function (id) {
+    return axios.get("/api/notes/" + id)
+  },
+
   addNote: function (note) {
     return axios.post("/api/notes", note)
   },
-
-  
 
   updateNote: function (id, note) {
     return axios.put("/api/notes/" + id, note)
