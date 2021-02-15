@@ -10,9 +10,9 @@
 }
 
 a:-webkit-any-link {
-  color: inherit;
+  color: inherit !important;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .add-new-note__btn {
@@ -363,5 +363,10 @@ a:-webkit-any-link {
   background-color: #E00045;
   color: rgba(255, 255, 255, 0.95);
   border-color: #A6001F;
+}
+
+.alert-dismissible .close {
+  padding: .25rem !important;
+  width: 30px;
 }
 /*# sourceMappingURL=style.css.map */

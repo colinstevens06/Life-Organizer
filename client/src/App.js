@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Login from './pages/Login'
 import NewUser from './pages/NewUser'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 // Importing Pages
 import Main from "./pages/Main"

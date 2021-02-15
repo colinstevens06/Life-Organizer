@@ -11,9 +11,9 @@
 }
 
 a:-webkit-any-link {
-  color: inherit;
+  color: inherit !important;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 
