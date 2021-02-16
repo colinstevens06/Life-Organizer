@@ -34,15 +34,11 @@ function Main() {
 
   const updateBrowser = (id) => {
     if (browserSet === false) {
-      // let newURL = window.location.href + id
-      // window.document.location.search = id
       setBrowserSet(true)
     }
   }
 
   const dbRefresh = input => {
-    console.log("input on main")
-    console.log(input)
     setDbRefreshVariant(input)
   }
 

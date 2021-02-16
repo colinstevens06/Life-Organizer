@@ -1,7 +1,16 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
 
+
 const noteSchema = new Schema({
+  id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Note',
+    required: true,
+    unique: true,
+    default: function () { return Math.floor(Math.random() * 1000000000000) }
+
+  },
   name: {
     type: String,
     required: true

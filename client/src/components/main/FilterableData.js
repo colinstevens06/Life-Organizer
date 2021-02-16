@@ -1,28 +1,8 @@
-import React, { useState, useEffect } from "react";
-// import DataRow from "./DataRow"
-
-import API from "../../utils/API";
-import DataRowContainer from "./DataRowContainer";
+import React from "react";
+import DataRow from "./DataRow";
 
 function FilterableData(props) {
-  const [allNotes, setAllNotes] = useState(undefined)
 
-  useEffect(() => {
-    getAPI()
-  }, [])
-
-  // useEffect(() => {
-  //   getAPI()
-  // }, [props.dbRefreshTrigger, allNotes])
-
-  const getAPI = () => {
-    API.getNotes()
-      .then(res => {
-        setAllNotes(res.data)
-        console.log(allNotes)
-      })
-      .catch(err => console.log(err))
-  }
 
 
 
@@ -37,21 +17,17 @@ function FilterableData(props) {
       </div>
       <hr style={{ marginBlockEnd: 0 }} />
 
-      <DataRowContainer
-        allNotes={props.userNotes}
-      />
-
-      {/* {allNotes &&
-        allNotes.map(note => (
+      {props.userNotes &&
+        props.userNotes.map(note => (
           <DataRow
-            key={note._id}
-            id={note._id}
+            key={note.name}
+            id={note.id}
             name={note.name}
             category={note.category}
             date={note.lastUpdated.slice(0, 10)}
           />
         ))
-      } */}
+      }
 
 
     </div>

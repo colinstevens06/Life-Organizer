@@ -19,7 +19,6 @@ function App() {
     return user ? setIsLoggedIn(true) : setIsLoggedIn(false)
   })
 
-  console.log('logged in?', isLoggedIn)
 
 
   return (
