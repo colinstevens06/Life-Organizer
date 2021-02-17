@@ -3,9 +3,6 @@ import DataRow from "./DataRow";
 
 function FilterableData(props) {
 
-
-
-
   return (
     <div className="container_notes-list">
       <div className="header_notes-list">Colin's Notes</div>
@@ -20,8 +17,8 @@ function FilterableData(props) {
       {props.userNotes &&
         props.userNotes.map(note => (
           <DataRow
-            key={note.name}
-            id={note.id}
+            key={note._id}
+            id={note._id}
             name={note.name}
             category={note.category}
             date={note.lastUpdated.slice(0, 10)}

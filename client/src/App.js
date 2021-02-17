@@ -11,13 +11,26 @@ import SingleNote from './pages/SingleNote'
 
 // Importing Firebase for authentication
 import fire from './utils/fire'
+// import { set } from 'mongoose';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [globalUID, setGlobalUID] = useState()
+  const [allUserNotes, setAllUserNotes] = useState()
 
   fire.auth().onAuthStateChanged((user) => {
     return user ? setIsLoggedIn(true) : setIsLoggedIn(false)
   })
+
+  const updateGlobalUID = (input) => {
+    console.log("user updated!", input)
+    setGlobalUID(input)
+  }
+
+  const updateGlobalUserNotes = (input) => {
+    console.log("*** Global User Notes Updated!", input)
+    setAllUserNotes(input)
+  }
 
 
 
@@ -41,11 +54,21 @@ function App() {
           : (
             <>
               <Switch>
-                <Route exact path={["/", "/new-user", "/:id"]}>
-                  <Main />
+                <Route exact path={["/", "/new-user", '/notes']}>
+                  <Main
+                    updateGlobalUID={updateGlobalUID}
+                    updateGlobalUserNotes={updateGlobalUserNotes}
+                  />
                 </Route>
                 <Route exact path="/notes/:id">
-                  <SingleNote />
+                  {allUserNotes &&
+                    <SingleNote
+                      uid={globalUID}
+                      allNotes={allUserNotes}
+                    />
+
+                  }
+
                 </Route>
               </Switch>
 

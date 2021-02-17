@@ -20,7 +20,7 @@ module.exports = {
 
   findByUID: function (req, res) {
     db.Note
-      .findOne({ fireID: req.params.id })
+      .find({ fireID: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
   },

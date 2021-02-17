@@ -8,10 +8,15 @@ export default function SingleNoteMainView(props) {
   const [formObject, setFormObject] = useState({})
 
   useEffect(() => {
-    setFormObject(props.noteObject)
+    let newFormObject = props.noteObject
+    setFormObject(newFormObject)
+    console.log("formObject")
     console.log(formObject)
 
   }, [props.noteObject])
+
+  useEffect(() => { }, [formObject])
+
 
 
   function handleInputChange(event) {

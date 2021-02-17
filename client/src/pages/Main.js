@@ -8,11 +8,11 @@ import fire from '../utils/fire'
 import CreateNoteBtn from '../components/CreateNoteBtn'
 import FilterableData from '../components/main/FilterableData'
 
-function Main() {
-  const [dbRefreshVariant, setDbRefreshVariant] = useState(false)
+function Main(props) {
+  // const [dbRefreshVariant, setDbRefreshVariant] = useState(false)
   const [userID, setUserID] = useState()
   const [userNotes, setUserNotes] = useState()
-  const [browserSet, setBrowserSet] = useState(false)
+  // const [browserSet, setBrowserSet] = useState(false)
 
 
   useEffect(() => {
@@ -20,11 +20,6 @@ function Main() {
   }, [])
 
   useEffect(() => {
-    console.log(userID)
-    if (browserSet === false && userID) {
-      updateBrowser(userID)
-    }
-
     if (userID) {
       getUserNotes(userID)
       console.log("userNotes", userNotes)
@@ -32,33 +27,30 @@ function Main() {
 
   }, [userID])
 
-  const updateBrowser = (id) => {
-    if (browserSet === false) {
-      setBrowserSet(true)
-    }
-  }
 
-  const dbRefresh = input => {
-    setDbRefreshVariant(input)
-  }
-
+  // this is good to go and important
   const signOut = () => {
     fire.auth().signOut()
   }
 
+  // this is good to go and imortant
   const getUserInfo = () => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         setUserID(user.uid)
+        props.updateGlobalUID(user.uid)
       }
     })
   }
 
+  // this is good to go and important
   const getUserNotes = (id) => {
     API.getUser(id)
       .then(res => {
         setUserNotes(res.data)
         console.log("res.data", res.data)
+        props.updateGlobalUserNotes(res.data)
+
       })
       .catch(err => console.log(err))
   }
@@ -70,14 +62,12 @@ function Main() {
   return (
     <div>
       <CreateNoteBtn
-        dbRefreshTrigger={dbRefresh}
-        dbRefreshVariant={dbRefreshVariant}
+
       />
       {userNotes &&
-        (userNotes.notes.length >= 1) ? (
+        (userNotes.length >= 1) ? (
           <FilterableData
-            dbRefreshTrigger={dbRefreshVariant}
-            userNotes={userNotes.notes}
+            userNotes={userNotes}
           />
         ) : (
           <div style={{ textAlign: "center", marginTop: 15 }}>Create your first note</div>
