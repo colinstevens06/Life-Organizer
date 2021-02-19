@@ -9,10 +9,10 @@ import CreateNoteBtn from '../components/CreateNoteBtn'
 import FilterableData from '../components/main/FilterableData'
 
 function Main(props) {
-  // const [dbRefreshVariant, setDbRefreshVariant] = useState(false)
   const [userID, setUserID] = useState()
   const [userNotes, setUserNotes] = useState()
-  // const [browserSet, setBrowserSet] = useState(false)
+  const [browserRefresh, setBrowserRefresh] = useState(false)
+
 
 
   useEffect(() => {
@@ -25,7 +25,11 @@ function Main(props) {
       console.log("userNotes", userNotes)
     }
 
-  }, [userID])
+
+    console.log("browserRefresh", browserRefresh)
+
+  }, [userID, browserRefresh])
+
 
 
   // this is good to go and important
@@ -38,7 +42,6 @@ function Main(props) {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         setUserID(user.uid)
-        props.updateGlobalUID(user.uid)
       }
     })
   }
@@ -49,10 +52,18 @@ function Main(props) {
       .then(res => {
         setUserNotes(res.data)
         console.log("res.data", res.data)
-        props.updateGlobalUserNotes(res.data)
 
       })
       .catch(err => console.log(err))
+  }
+
+  const updateAllNotesObject = () => {
+
+    if (browserRefresh) {
+      setBrowserRefresh(false)
+    } else {
+      setBrowserRefresh(true)
+    }
   }
 
 
@@ -62,7 +73,8 @@ function Main(props) {
   return (
     <div>
       <CreateNoteBtn
-
+        uid={userID}
+        updateAllNotesObject={updateAllNotesObject}
       />
       {userNotes &&
         (userNotes.length >= 1) ? (

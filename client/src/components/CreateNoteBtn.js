@@ -31,13 +31,14 @@ export default function CreateNoteBtn(props) {
 
   function addToDb() {
     API.addNote({
+      fireID: props.uid,
       name: formObject.name,
       category: formObject.category,
       note: formObject.note
-    })
-      .then(
-        props.dbRefreshTrigger(!props.dbRefreshVariant)
-      )
+    }).then(
+
+      props.updateAllNotesObject()
+    )
       .catch(err => console.log(err))
   }
 
