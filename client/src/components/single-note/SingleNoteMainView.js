@@ -8,7 +8,7 @@ export default function SingleNoteMainView(props) {
   const [formObject, setFormObject] = useState({})
 
   useEffect(() => {
-    let newFormObject = props.noteObject
+    let newFormObject = props.noteObject[0]
     setFormObject(newFormObject)
     console.log("formObject")
     console.log(formObject)

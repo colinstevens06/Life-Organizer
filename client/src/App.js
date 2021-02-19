@@ -11,7 +11,6 @@ import SingleNote from './pages/SingleNote'
 
 // Importing Firebase for authentication
 import fire from './utils/fire'
-// import { set } from 'mongoose';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -19,12 +18,6 @@ function App() {
   fire.auth().onAuthStateChanged((user) => {
     return user ? setIsLoggedIn(true) : setIsLoggedIn(false)
   })
-
-
-
-
-
-
 
   return (
     <div className="App">
