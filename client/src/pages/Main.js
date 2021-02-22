@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API from '../utils/API'
+import { useAuth } from "../context/AuthContext"
 
 // Firebase Auth
 import fire from '../utils/fire'
@@ -8,43 +9,16 @@ import fire from '../utils/fire'
 import CreateNoteBtn from '../components/CreateNoteBtn'
 import FilterableData from '../components/main/FilterableData'
 
-function Main(props) {
-  const [userID, setUserID] = useState()
+function Main() {
   const [userNotes, setUserNotes] = useState()
   const [browserRefresh, setBrowserRefresh] = useState(false)
-
+  const { currentUser, logOut } = useAuth()
 
 
   useEffect(() => {
-    getUserInfo()
-  }, [])
 
-  useEffect(() => {
-    if (userID) {
-      getUserNotes(userID)
-      console.log("userNotes", userNotes)
-    }
-
-
-    console.log("browserRefresh", browserRefresh)
-
-  }, [userID, browserRefresh])
-
-
-
-  // this is good to go and important
-  const signOut = () => {
-    fire.auth().signOut()
-  }
-
-  // this is good to go and imortant
-  const getUserInfo = () => {
-    fire.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUserID(user.uid)
-      }
-    })
-  }
+    getUserNotes(currentUser.uid)
+  }, [currentUser, browserRefresh])
 
   // this is good to go and important
   const getUserNotes = (id) => {
@@ -67,13 +41,10 @@ function Main(props) {
   }
 
 
-
-
-
   return (
     <div>
       <CreateNoteBtn
-        uid={userID}
+        uid={currentUser.uid}
         updateAllNotesObject={updateAllNotesObject}
       />
       {userNotes &&
@@ -86,7 +57,7 @@ function Main(props) {
         )
 
       }
-      <div className="add-new-note__btn" onClick={signOut}>
+      <div className="add-new-note__btn" onClick={logOut}>
         Log Out
       </div>
     </div>

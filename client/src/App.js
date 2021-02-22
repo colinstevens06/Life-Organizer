@@ -11,6 +11,7 @@ import SingleNote from './pages/SingleNote'
 
 // Importing Firebase for authentication
 import fire from './utils/fire'
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -21,43 +22,46 @@ function App() {
 
   return (
     <div className="App">
+
       <Router>
+        <AuthProvider>
 
-        {!isLoggedIn
-          ? (
-            <>
-              <Switch>
-                <Route exact path="/">
-                  <Login />
-                </Route>
-                <Route exact path="/new-user">
-                  <NewUser />
-                </Route>
-              </Switch>
-            </>
-          )
-          : (
-            <>
-              <Switch>
-                <Route exact path={["/", "/new-user", '/notes']}>
-                  <Main />
-                </Route>
-                <Route exact path="/notes/:id">
-                  <SingleNote />
-
-
-
-                </Route>
-              </Switch>
-
-            </>
-          )
-
-        }
+          {!isLoggedIn
+            ? (
+              <>
+                <Switch>
+                  <Route exact path={["/", "/login"]}>
+                    <Login />
+                  </Route>
+                  <Route exact path="/new-user">
+                    <NewUser />
+                  </Route>
+                </Switch>
+              </>
+            )
+            : (
+              <>
+                <Switch>
+                  <Route exact path={["/", "/new-user", '/notes']}>
+                    <Main />
+                  </Route>
+                  <Route exact path="/notes/:id">
+                    <SingleNote />
 
 
 
+                  </Route>
+                </Switch>
 
+              </>
+            )
+
+          }
+
+
+
+
+        </AuthProvider>
       </Router>
     </div>
   );

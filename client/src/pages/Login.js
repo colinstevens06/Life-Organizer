@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Alert } from 'react-bootstrap'
+import { useAuth } from '../context/AuthContext'
 
 // Firebase Authentication
 import fire from '../utils/fire'
@@ -11,22 +12,32 @@ export default function Login() {
   const [password, setPassword] = useState()
   const [errorMessage, setErrorMessage] = useState()
   const [showError, setShowError] = useState(false);
+  const [loading, setLoading] = useState(false)
 
 
-  const handleSubmit = (e) => {
+  const { login } = useAuth()
+
+
+  async function handleSubmit(e) {
     e.preventDefault()
 
+    try {
+      setErrorMessage('')
+      setLoading(true)
+      await login(email, password)
+        .catch((error) => {
+          console.log(error.code);
+          console.log(error.message);
+          setErrorMessage(error.message)
+          setShowError(true)
+        });
 
+    } catch {
+      setErrorMessage("Login Failed. Make sure you have an account")
+      setShowError(true)
+    }
 
-    fire.auth().signInWithEmailAndPassword(email, password)
-      .catch((error) => {
-        console.error('Incorrect username or password', error)
-        setErrorMessage(error.message)
-        setShowError(true)
-      })
   }
-
-
 
   return (
     <div className="container_form-login_newUser">
@@ -39,7 +50,7 @@ export default function Login() {
         <input type="text" onChange={({ target }) => setEmail(target.value)} placeholder="Email" />
         <input type="password" onChange={({ target }) => setPassword(target.value)} placeholder="Password" />
         <div className="container-buttons_form-login_newUser">
-          <button type="submit">Log In</button>
+          <button disabled={loading} type="submit">Log In</button>
           <Link to="/new-user" className="button_form-login_newUser">Create Account</Link>
         </div>
       </form>
