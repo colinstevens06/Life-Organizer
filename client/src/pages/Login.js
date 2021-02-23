@@ -26,19 +26,17 @@ export default function Login() {
       setErrorMessage('')
       setLoading(true)
       await login(email, password)
-        .catch((error) => {
-          console.log(error.code);
-          console.log(error.message);
-          setErrorMessage(error.message)
-          setShowError(true)
-        });
-      history.push("/")
 
-    } catch {
-      setErrorMessage("Login Failed. Make sure you have an account")
+
+    } catch (error) {
+      console.error(error)
+      setErrorMessage(error.message)
       setShowError(true)
+      setLoading(false)
+      return
     }
 
+    history.push("/")
   }
 
   return (
@@ -47,7 +45,12 @@ export default function Login() {
 
       <form onSubmit={handleSubmit} className="form-login_newUser">
         {
-          (showError && errorMessage.length >= 1) && <Alert variant="danger" onClose={() => setShowError(false)} dismissible>{errorMessage}</Alert>
+          (showError &&
+            (errorMessage.length >= 1) && <Alert variant="danger" onClose={() => setShowError(false)} dismissible>{errorMessage}</Alert>
+
+
+          )
+
         }
         <input type="text" onChange={({ target }) => setEmail(target.value)} placeholder="Email" />
         <input type="password" onChange={({ target }) => setPassword(target.value)} placeholder="Password" />

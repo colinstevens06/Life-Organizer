@@ -28,15 +28,11 @@ export default function Login() {
       setError('')
       setLoading(true)
       await signUp(email, password)
-        .catch((error) => {
-          console.log(error.code);
-          console.log(error.message);
-          setError(error.message)
-          setShowError(true)
-        });
-    } catch {
-      setError("Create account failed")
+    } catch (error) {
+      setError(error.message)
       setShowError(true)
+      setLoading(false)
+      return
     }
 
   }
