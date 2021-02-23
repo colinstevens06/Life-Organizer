@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import API from '../utils/API'
 import { useAuth } from "../context/AuthContext"
 
-// Firebase Auth
-import fire from '../utils/fire'
-
 // Components
 import CreateNoteBtn from '../components/CreateNoteBtn'
 import FilterableData from '../components/main/FilterableData'

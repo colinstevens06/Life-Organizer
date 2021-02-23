@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Alert } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext'
 
@@ -13,6 +13,7 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState()
   const [showError, setShowError] = useState(false);
   const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
 
   const { login } = useAuth()
@@ -31,6 +32,7 @@ export default function Login() {
           setErrorMessage(error.message)
           setShowError(true)
         });
+      history.push("/")
 
     } catch {
       setErrorMessage("Login Failed. Make sure you have an account")

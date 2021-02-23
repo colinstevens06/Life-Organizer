@@ -17,6 +17,7 @@ export function AuthProvider({ children }) {
   }
 
   function login(email, password) {
+    console.log("attempting login")
     return fire.auth().signInWithEmailAndPassword(email, password)
   }
 
