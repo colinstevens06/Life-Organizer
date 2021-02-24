@@ -9,6 +9,7 @@ import SingleNoteMainView from "../components/single-note/SingleNoteMainView";
 // Utilities
 import API from "../utils/API";
 import { useAuth } from '../context/AuthContext'
+import { set } from "mongoose";
 
 export default function SingleNote() {
   const [note, setNote] = useState({})
@@ -25,15 +26,17 @@ export default function SingleNote() {
     if (!userMounted) {
       getUserNotes(currentUser.uid)
 
-    } else {
+    } else if (browserRefresh === true) {
+      getUserNotes(currentUser.uid)
+      setBrowserRefresh(false)
+    }
+
+    else {
       let newNote = userNotes.filter(note => note._id === id)
       setNote(newNote)
     }
-  }, [currentUser, id])
+  }, [currentUser, id, browserRefresh])
 
-  useEffect(() => {
-    getUserNotes(currentUser.uid)
-  }, [browserRefresh])
 
   const getUserNotes = (id) => {
     API.getUser(id)
@@ -62,11 +65,7 @@ export default function SingleNote() {
   }
 
   const updateAllNotesObject = () => {
-    if (browserRefresh) {
-      setBrowserRefresh(false)
-    } else {
-      setBrowserRefresh(true)
-    }
+    setBrowserRefresh(true)
   }
 
 
