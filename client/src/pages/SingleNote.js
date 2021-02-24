@@ -15,6 +15,8 @@ export default function SingleNote() {
   const [userNotes, setUserNotes] = useState()
   const [userMounted, setUserMounted] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [browserRefresh, setBrowserRefresh] = useState(false)
+
 
   const { id } = useParams()
   const { currentUser } = useAuth()
@@ -22,11 +24,16 @@ export default function SingleNote() {
   useEffect(() => {
     if (!userMounted) {
       getUserNotes(currentUser.uid)
+
     } else {
       let newNote = userNotes.filter(note => note._id === id)
       setNote(newNote)
     }
   }, [currentUser, id])
+
+  useEffect(() => {
+    getUserNotes(currentUser.uid)
+  }, [browserRefresh])
 
   const getUserNotes = (id) => {
     API.getUser(id)
@@ -54,6 +61,14 @@ export default function SingleNote() {
 
   }
 
+  const updateAllNotesObject = () => {
+    if (browserRefresh) {
+      setBrowserRefresh(false)
+    } else {
+      setBrowserRefresh(true)
+    }
+  }
+
 
 
   return (
@@ -62,6 +77,7 @@ export default function SingleNote() {
         <div>
           <CreateNoteBtn
             uid={currentUser.uid}
+            updateAllNotesObject={updateAllNotesObject}
           />
           <div className="container_single-note-main-window container_notes-list">
 
