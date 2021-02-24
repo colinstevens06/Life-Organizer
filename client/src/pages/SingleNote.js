@@ -1,86 +1,91 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+// Components
 import CreateNoteBtn from "../components/CreateNoteBtn";
 import SingleNoteLeftCol from "../components/single-note/SingleNoteLeftCol";
 import SingleNoteMainView from "../components/single-note/SingleNoteMainView";
+
+// Utilities
 import API from "../utils/API";
-
-import fire from '../utils/fire'
-
-
+import { useAuth } from '../context/AuthContext'
 
 export default function SingleNote() {
   const [note, setNote] = useState({})
-  const [userID, setUserID] = useState()
   const [userNotes, setUserNotes] = useState()
+  const [userMounted, setUserMounted] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const { id } = useParams()
-  console.log(id)
+  const { currentUser } = useAuth()
 
   useEffect(() => {
-    getUserInfo()
-  }, [])
-
-
-  useEffect(() => {
-    if (userID) {
-      getUserNotes(userID)
-      console.log("userNotes", userNotes)
+    if (!userMounted) {
+      getUserNotes(currentUser.uid)
+    } else {
+      let newNote = userNotes.filter(note => note._id === id)
+      setNote(newNote)
     }
-
-  }, [userID])
-
-
-  useEffect(() => {
-
-    if (userNotes) {
-      console.log("userNotes", userNotes)
-      console.log("noteID", id)
-
-      let singleNote = userNotes.filter(note => note._id === id)
-      console.log("singleNote", singleNote)
-      setNote(singleNote)
-    }
-
-  }, [userNotes, id])
-
-
-
-  const getUserInfo = () => {
-    fire.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUserID(user.uid)
-      }
-    })
-  }
+  }, [currentUser, id])
 
   const getUserNotes = (id) => {
     API.getUser(id)
       .then(res => {
+        console.log("API HIT!")
         setUserNotes(res.data)
+        let thisNote = findThisNote(res.data)
+        setNote(thisNote)
+        setLoading(false)
+        setUserMounted(true)
       })
       .catch(err => console.log(err))
+  }
+
+  const findThisNote = (input) => {
+    let thisNote = input.filter(note => note._id === id)
+    return thisNote
+  }
+
+  const updateUserNotes = (input) => {
+    let noteToUpdate = input._id
+    let noteToUpdateIndex = userNotes.findIndex(obj => obj._id === noteToUpdate)
+    userNotes[noteToUpdateIndex] = input
+    console.log("userNotes updated w/o API call", userNotes)
+
   }
 
 
 
   return (
     <div>
-      <CreateNoteBtn />
-      <div className="container_single-note-main-window container_notes-list">
-
-        <SingleNoteLeftCol />
-        {note.length >= 1 &&
-          <SingleNoteMainView
-            noteObject={note}
+      {(!loading) &&
+        <div>
+          <CreateNoteBtn
+            uid={currentUser.uid}
           />
+          <div className="container_single-note-main-window container_notes-list">
 
-        }
-      </div>
+            {userNotes.length >= 1 &&
+              <SingleNoteLeftCol
+                userNotes={userNotes}
+              />
+            }
+
+
+
+            <SingleNoteMainView
+              noteObject={note}
+              updateUserNotes={updateUserNotes}
+            />
+
+          </div>
+        </div>
+
+      }
 
 
 
 
-    </div>
+    </div >
   )
 }

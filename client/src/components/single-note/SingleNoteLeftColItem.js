@@ -9,10 +9,6 @@ export default function SingleNoteLeftColItem(props) {
     <Link
       to={"/notes/" + props.id}
       className="row__left-column-list"
-    // {
-    //   (props.id === )
-    // }
-
     >
       {props.name}
     </ Link >

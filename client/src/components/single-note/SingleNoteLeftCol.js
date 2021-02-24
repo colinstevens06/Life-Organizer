@@ -1,29 +1,14 @@
-import React, { useState, useEffect } from "react";
-import API from '../../utils/API'
+import React from "react";
 import SingleNoteLeftColItem from "./SingleNoteLeftColItem";
 
-export default function SingleNoteLeftCol() {
-  const [allNotes, setAllNotes] = useState(undefined)
-
-  useEffect(() => {
-    getAPI()
-  }, [])
-
-  const getAPI = () => {
-    API.getNotes()
-      .then(res => {
-        setAllNotes(res.data)
-      })
-      .catch(err => console.log(err))
-  }
-
+export default function SingleNoteLeftCol(props) {
 
   return (
     <div className="container__single-note-left-col">
 
-      {allNotes &&
+      {props.userNotes &&
 
-        allNotes.map(note => (
+        props.userNotes.map(note => (
           <SingleNoteLeftColItem
             key={note._id}
             id={note._id}

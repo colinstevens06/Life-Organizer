@@ -3,9 +3,6 @@ import { Link, useHistory } from 'react-router-dom'
 import { Alert } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext'
 
-// Firebase Authentication
-import fire from '../utils/fire'
-
 export default function Login() {
 
   const [email, setEmail] = useState()
@@ -47,8 +44,6 @@ export default function Login() {
         {
           (showError &&
             (errorMessage.length >= 1) && <Alert variant="danger" onClose={() => setShowError(false)} dismissible>{errorMessage}</Alert>
-
-
           )
 
         }

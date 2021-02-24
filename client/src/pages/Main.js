@@ -13,7 +13,6 @@ function Main() {
 
 
   useEffect(() => {
-
     getUserNotes(currentUser.uid)
   }, [currentUser, browserRefresh])
 
@@ -22,8 +21,6 @@ function Main() {
     API.getUser(id)
       .then(res => {
         setUserNotes(res.data)
-        console.log("res.data", res.data)
-
       })
       .catch(err => console.log(err))
   }
@@ -40,23 +37,28 @@ function Main() {
 
   return (
     <div>
-      <CreateNoteBtn
-        uid={currentUser.uid}
-        updateAllNotesObject={updateAllNotesObject}
-      />
       {userNotes &&
-        (userNotes.length >= 1) ? (
-          <FilterableData
-            userNotes={userNotes}
+        <>
+          <CreateNoteBtn
+            uid={currentUser.uid}
+            updateAllNotesObject={updateAllNotesObject}
           />
-        ) : (
-          <div style={{ textAlign: "center", marginTop: 15 }}>Create your first note</div>
-        )
+          {
 
-      }
-      <div className="add-new-note__btn" onClick={logOut}>
-        Log Out
+            (userNotes.length >= 1) ? (
+              <FilterableData
+                userNotes={userNotes}
+              />
+            ) : (
+                <div style={{ textAlign: "center", marginTop: 15 }}>Create your first note</div>
+              )
+          }
+
+          <div className="add-new-note__btn" onClick={logOut}>
+            Log Out
       </div>
+        </>
+      }
     </div>
   )
 }
