@@ -9,7 +9,6 @@ import SingleNoteMainView from "../components/single-note/SingleNoteMainView";
 // Utilities
 import API from "../utils/API";
 import { useAuth } from '../context/AuthContext'
-import { set } from "mongoose";
 
 export default function SingleNote() {
   const [note, setNote] = useState({})
