@@ -131,6 +131,22 @@ a:-webkit-any-link {
   gap: 10px;
 }
 
+.no-notes-container {
+  text-align: center;
+  margin: 0 auto 2.5rem auto;
+  width: 75%;
+}
+
+.no-notes-container h1 {
+  line-height: 3.5;
+  -webkit-margin-after: 0 !important;
+          margin-block-end: 0 !important;
+}
+
+.no-notes-container p {
+  font-size: 1.25rem;
+}
+
 .container_modal {
   min-width: 600px;
   padding: 12px 24px;

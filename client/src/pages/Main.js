@@ -50,7 +50,13 @@ function Main() {
                 userNotes={userNotes}
               />
             ) : (
-                <div style={{ textAlign: "center", marginTop: 15 }}>Create your first note</div>
+                <div className="no-notes-container">
+                  <h1>Life Organizer</h1>
+                  <p>Life feeling a bit messy lately? Can't keep track of your best ideas? Does that to-do list seem like it never gets finished, because you can't remember what was on it?</p>
+                  <p>We've got your back.</p>
+                  <p>With our state-of-the-art Life Organizer, you'll never forget anything again!</p>
+                  <p>Get started by creating your first note using the button at the top of your screen.</p>
+                </div>
               )
           }
 
