@@ -230,11 +230,13 @@ a:-webkit-any-link {
 }
 
 .container__update-buttons div {
+  position: relative;
   padding: 6px 8px;
   width: 100px;
   text-align: center;
   -webkit-transition: .5s;
   transition: .5s;
+  overflow: hidden;
 }
 
 .container__update-buttons div:hover {
@@ -242,6 +244,28 @@ a:-webkit-any-link {
   -webkit-transition: .5s;
   transition: .5s;
   background-color: #ffb5c1;
+}
+
+.container__update-buttons div:after {
+  content: "";
+  background-color: #E00045;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.container__update-buttons div:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  -webkit-transition: 0s;
+  transition: 0s;
 }
 
 .container__update-buttons a {

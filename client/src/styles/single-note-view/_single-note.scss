@@ -12,15 +12,38 @@
   padding-left: 15px;
 
   div {
+    position: relative;
     padding: 6px 8px;
     width: 100px;
     text-align: center;
     transition: .5s;
+    overflow: hidden;
     &:hover {
       cursor: pointer;
       transition: .5s;
       background-color: $primaryColorLight;
     }
+    &:after {
+      content: "";
+      background-color: $primaryColor;
+      display: block;
+      position: absolute;
+      padding-top: 300%;
+      padding-left: 350%;
+      margin-left: -20px !important;
+      margin-top: -120%;
+      opacity: 0;
+      transition: all 0.8s;
+
+    }
+
+    &:active:after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s;
+    }
+
   }
   
   a {
