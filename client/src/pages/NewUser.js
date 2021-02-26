@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Alert } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 export default function Login() {
@@ -14,6 +14,8 @@ export default function Login() {
 
   // importing the signUp function from my auth section
   const { signUp } = useAuth()
+  const history = useHistory()
+
 
 
   async function handleSubmit(e) {
@@ -35,6 +37,9 @@ export default function Login() {
       return
     }
 
+    history.push("/")
+
+
   }
 
   return (
@@ -47,7 +52,7 @@ export default function Login() {
         <input type="password" onChange={({ target }) => setPasswordVerify(target.value)} placeholder="Password" />
         <div className="container-buttons_form-login_newUser">
           <button disabled={loading} type="submit">Create Account</button>
-          <Link to="/" className="button_form-login_newUser">Log In</Link>
+          <Link to="/" className="button_form-login_newUser">Have an account?</Link>
         </div>
       </form>
     </div>
