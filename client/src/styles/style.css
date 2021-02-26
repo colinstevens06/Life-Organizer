@@ -29,6 +29,8 @@ a:-webkit-any-link {
   -webkit-transition: .5s;
   transition: .5s;
   font-size: 1.5rem;
+  -webkit-box-shadow: 4px 6px .5rem #c8c8c8;
+          box-shadow: 4px 6px .5rem #c8c8c8;
 }
 
 .add-new-note__btn:hover {
@@ -307,6 +309,8 @@ a:-webkit-any-link {
   margin-top: 10%;
   padding: 25px 15px;
   border-radius: 5px;
+  -webkit-box-shadow: 6px 10px .5rem #c8c8c8;
+          box-shadow: 6px 10px .5rem #c8c8c8;
 }
 
 .container_form-login_newUser h1 {
