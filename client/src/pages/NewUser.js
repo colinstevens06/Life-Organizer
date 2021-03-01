@@ -42,11 +42,17 @@ export default function Login() {
 
   }
 
+  const closeAlert = () => {
+
+    setShowError(false)
+    setError('')
+  }
+
   return (
     <div className="container_form-login_newUser">
       <h1>Create Account</h1>
       <form onSubmit={handleSubmit} className="form-login_newUser">
-        {showError && <Alert variant="danger" onClose={() => setShowError(false)} dismissible>{error}</Alert>}
+        {showError && <Alert variant="danger" onClose={closeAlert} dismissible>{error}</Alert>}
         <input type="text" onChange={({ target }) => setEmail(target.value)} placeholder="Email" />
         <input type="password" onChange={({ target }) => setPassword(target.value)} placeholder="Password" />
         <input type="password" onChange={({ target }) => setPasswordVerify(target.value)} placeholder="Password" />
@@ -55,6 +61,6 @@ export default function Login() {
           <Link to="/" className="button_form-login_newUser">Have an account?</Link>
         </div>
       </form>
-    </div>
+    </div >
   )
 }

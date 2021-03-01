@@ -5,7 +5,7 @@ function FilterableData(props) {
 
   return (
     <div className="container_notes-list">
-      <div className="header_notes-list">Colin's Notes</div>
+      <div className="header_notes-list">Your Notes</div>
       <hr />
       <div className="row_notes-list">
         <div className="header__sortable-lists">Name</div>

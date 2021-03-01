@@ -268,6 +268,11 @@ a:-webkit-any-link {
   transition: 0s;
 }
 
+.container__update-buttons div:active {
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+}
+
 .container__update-buttons a {
   padding: 6px 8px;
   width: 100px;
