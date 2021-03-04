@@ -11,22 +11,26 @@ import NewUser from './pages/NewUser'
 
 // Importing Firebase for authentication
 import { AuthProvider } from './context/AuthContext';
+import NavBar from './components/global/NavBar';
 
 function App() {
 
 
   return (
+    <div>
 
-    <Router>
-      <AuthProvider>
-        <Switch>
-          <PrivateRoute exact path="/" component={Main} />
-          <PrivateRoute exact path="/notes/:id" component={SingleNote} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/new-user" component={NewUser} />
-        </Switch>
-      </AuthProvider>
-    </Router>
+      <Router>
+        <AuthProvider>
+          <NavBar />
+          <Switch>
+            <PrivateRoute exact path="/" component={Main} />
+            <PrivateRoute exact path="/notes/:id" component={SingleNote} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/new-user" component={NewUser} />
+          </Switch>
+        </AuthProvider>
+      </Router>
+    </div>
   );
 }
 
