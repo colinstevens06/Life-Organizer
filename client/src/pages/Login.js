@@ -50,8 +50,10 @@ export default function Login() {
         <input type="password" onChange={({ target }) => setPassword(target.value)} placeholder="Password" />
         <div className="container-buttons_form-login_newUser">
           <button disabled={loading} type="submit">Log In</button>
-          <Link to="/new-user" className="button_form-login_newUser">Create Account</Link>
         </div>
+        <hr />
+        <Link to="/new-user" className="button_form-login_newUser">Create New Account</Link>
+
       </form>
     </div>
   )

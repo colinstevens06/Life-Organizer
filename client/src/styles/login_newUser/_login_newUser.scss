@@ -1,6 +1,6 @@
 .container_form-login_newUser {
-  width: 50%;
-  min-width: 500px;
+  width: 40%;
+  min-width: 400px;
   min-height: 200px;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,6 @@
   }
 
   button, .button_form-login_newUser {
-    width: 45%;
     padding: 6px 8px;
     font-family: $primaryFontFamily;
     text-align: center;
@@ -62,6 +61,11 @@
       color: rgba(255, 255, 255, 0.95) !important;
       border-color: $primaryColorDark;
     }
+  }
+
+  button {
+    width: 100%;
+
   }
 
 }

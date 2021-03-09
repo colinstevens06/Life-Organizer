@@ -58,8 +58,10 @@ export default function Login() {
         <input type="password" onChange={({ target }) => setPasswordVerify(target.value)} placeholder="Password" />
         <div className="container-buttons_form-login_newUser">
           <button disabled={loading} type="submit">Create Account</button>
-          <Link to="/" className="button_form-login_newUser">Have an account?</Link>
         </div>
+        <hr />
+        <Link to="/" className="button_form-login_newUser">I already have an account</Link>
+
       </form>
     </div >
   )
