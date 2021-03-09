@@ -9,6 +9,7 @@ import SingleNoteMainView from "../components/single-note/SingleNoteMainView";
 // Utilities
 import API from "../utils/API";
 import { useAuth } from '../context/AuthContext'
+import SingleNoteLeftColMobile from "../components/single-note/SingleNoteLeftColMobile";
 
 export default function SingleNote() {
   const [note, setNote] = useState({})
@@ -40,7 +41,6 @@ export default function SingleNote() {
   const getUserNotes = (id) => {
     API.getUser(id)
       .then(res => {
-        console.log("API HIT!")
         setUserNotes(res.data)
         let thisNote = findThisNote(res.data)
         setNote(thisNote)
@@ -59,7 +59,6 @@ export default function SingleNote() {
     let noteToUpdate = input._id
     let noteToUpdateIndex = userNotes.findIndex(obj => obj._id === noteToUpdate)
     userNotes[noteToUpdateIndex] = input
-    console.log("userNotes updated w/o API call", userNotes)
 
   }
 
@@ -73,16 +72,26 @@ export default function SingleNote() {
     <div>
       {(!loading) &&
         <div>
-          <CreateNoteBtn
-            uid={currentUser.uid}
-            updateAllNotesObject={updateAllNotesObject}
-          />
+          <div className="mobile-container__top-event-row">
+            <CreateNoteBtn
+              uid={currentUser.uid}
+              updateAllNotesObject={updateAllNotesObject}
+            />
+            <SingleNoteLeftColMobile
+              userNotes={userNotes}
+            />
+
+          </div>
           <div className="container_single-note-main-window container_notes-list">
 
             {userNotes.length >= 1 &&
-              <SingleNoteLeftCol
-                userNotes={userNotes}
-              />
+              <>
+                <SingleNoteLeftCol
+                  userNotes={userNotes}
+                />
+              </>
+
+
             }
 
 

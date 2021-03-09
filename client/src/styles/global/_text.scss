@@ -1,16 +1,4 @@
-.header_notes-list {
-  font-size: 1.75rem;
-  font-weight: 800;
-  padding-left: 15px;
 
-}
-
-.header__sortable-lists {
-  font-size: 1.5rem;
-  color: #474747;
-  padding-left: 15px;
-
-}
 
 .header__single-note {
   font-size: 2rem;
@@ -54,21 +42,5 @@
 
 }
 
-.notes-list-results {
-  font-size: 1.25rem;
-  line-height: 2.5rem;
-  border-bottom: 1px solid #b9b9b9;
-  transition: .5s;
-  &:hover {
-    cursor: pointer;
-    background-color: $primaryColorLight;
-    transition: .5s;
-  }
-  div {
-    padding-left: 15px;
-  }
-  .result_category {
-    text-transform: capitalize;
-  }
-}
+
 

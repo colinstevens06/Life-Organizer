@@ -1,8 +1,47 @@
+.container_notes-list {
+  width: 75%;
+  margin: 25px auto;
+  padding: 20px 0;  
+}
+
+
 .row_notes-list {
   display: grid; 
   grid-template-columns: 50% 25% 25%;
   gap: 10px;
 }
+
+.header_notes-list {
+  font-size: 1.75rem;
+  font-weight: 800;
+  padding-left: 15px;
+}
+
+.header__sortable-lists {
+  font-size: 1.5rem;
+  color: #474747;
+  padding-left: 15px;
+
+}
+
+.notes-list-results {
+  font-size: 1.25rem;
+  line-height: 2.5rem;
+  border-bottom: 1px solid #b9b9b9;
+  transition: .5s;
+  &:hover {
+    cursor: pointer;
+    background-color: $primaryColorLight;
+    transition: .5s;
+  }
+  div {
+    padding-left: 15px;
+  }
+  .result_category {
+    text-transform: capitalize;
+  }
+}
+
 
 // IF THERE ARE NO NOTES TO SHOW
 
@@ -18,4 +57,36 @@
     font-size: 1.25rem;
   }
 
+}
+
+@media only screen and (max-width: 415px) {
+  .container_notes-list {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .row_notes-list {
+    grid-template-columns: 46% 29% 25%;
+    gap: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .header_notes-list {
+    display: none;
+  }
+
+  .header__sortable-lists {
+    font-size: .8rem;
+    padding-left: 0;
+  }
+
+  .notes-list-results {
+    font-size: 1rem;
+    padding-left: 0;
+    div {
+      padding-left: 0;
+    }
+  }
 }

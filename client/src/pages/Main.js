@@ -9,7 +9,7 @@ import FilterableData from '../components/main/FilterableData'
 function Main() {
   const [userNotes, setUserNotes] = useState()
   const [browserRefresh, setBrowserRefresh] = useState(false)
-  const { currentUser, logOut } = useAuth()
+  const { currentUser } = useAuth()
 
 
   useEffect(() => {

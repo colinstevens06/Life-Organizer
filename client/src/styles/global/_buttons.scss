@@ -20,3 +20,13 @@
     background-color: #ffffff;
   }
 }
+
+@media only screen and (max-width: 415px) {
+  .add-new-note__btn {
+    width: 75%;
+    padding: 10px 0;
+    font-size: 1.25rem;
+
+  }
+
+}

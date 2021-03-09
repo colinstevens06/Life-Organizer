@@ -39,3 +39,15 @@
     transition: .5s;
   }
 }
+
+
+@media only screen and (max-width: 415px) {
+  .nav-brand-header {
+    font-size: 1.45em;
+  }
+
+  .right-side_nav-bar {
+    margin-right: 0;
+  }
+
+}
