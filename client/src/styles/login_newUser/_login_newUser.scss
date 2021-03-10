@@ -65,22 +65,45 @@
 
   button {
     width: 100%;
-
   }
-
 }
-
 
 .alert-dismissible .close {
   padding: .25rem !important;
   width: 30px;
 }
 
+.login-hr {
+  border-top: 1px solid #000000;
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.text_forgot-password {
+  color: $primaryColorDark;
+  text-align: center;
+  padding: 12px 8px;
+  margin: 6px 0;
+  transition: .5s;
+  &:hover {
+    color: $primaryColor;
+    background-color: rgba(255, 255, 255, 0.25);
+    transition: .5s;
+  }
+}
+
+.text_forgot-password-success {
+  color: $primaryColorDark;
+  text-align: center;
+  margin-top: 24px;
+}
+
 
 @media only screen and (max-width: 415px) {
 
   .container_form-login_newUser {
-    min-width: 350px;
+    min-width: 300px;
     h1 {
       font-size: 2rem;
       padding: 0 0 20px 0;

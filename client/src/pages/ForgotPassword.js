@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Alert } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext'
 
-export default function Login() {
+
+
+
+export default function ForgotPassword() {
 
   const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
   const [errorMessage, setErrorMessage] = useState()
   const [showError, setShowError] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [loading, setLoading] = useState(false)
 
-  const history = useHistory()
+  const { forgotPassword } = useAuth()
 
-  const { login } = useAuth()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -21,22 +23,25 @@ export default function Login() {
     try {
       setErrorMessage('')
       setLoading(true)
-      await login(email, password)
+      await forgotPassword(email).then(function () {
+        setShowSuccess(true)
+      })
 
 
     } catch (error) {
       setErrorMessage(error.message)
       setShowError(true)
       setLoading(false)
+
       return
     }
 
-    history.push("/")
   }
+
 
   return (
     <div className="container_form-login_newUser">
-      <h1>Log In</h1>
+      <h1>Reset Password</h1>
 
       <form onSubmit={handleSubmit} className="form-login_newUser">
         {
@@ -46,13 +51,15 @@ export default function Login() {
 
         }
         <input type="text" onChange={({ target }) => setEmail(target.value)} placeholder="Email" />
-        <input type="password" onChange={({ target }) => setPassword(target.value)} placeholder="Password" />
         <div className="container-buttons_form-login_newUser">
-          <button disabled={loading} type="submit">Log In</button>
+          <button disabled={loading} type="submit">Reset Password</button>
         </div>
-        <hr className="login-hr" />
-        <Link to="/forgot-password" className="text_forgot-password">Forgot Password?</Link>
-        <Link to="/new-user" className="button_form-login_newUser">Create New Account</Link>
+        {
+          showSuccess &&
+          <div className="text_forgot-password-success">Success!<br />Check your email for next steps.</div>
+        }
+        <hr className="login-hr" style={{ marginBottom: 24 }} />
+        <Link to="/login" className="button_form-login_newUser">Cancel</Link>
 
       </form>
     </div>

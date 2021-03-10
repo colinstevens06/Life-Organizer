@@ -25,6 +25,12 @@ export function AuthProvider({ children }) {
     return fire.auth().signOut()
   }
 
+  function forgotPassword(email) {
+    return fire.auth().sendPasswordResetEmail(email)
+  }
+
+
+
   useEffect(() => {
     const unsubscribe = fire.auth().onAuthStateChanged(user => {
       setCurrentUser(user)
@@ -38,7 +44,8 @@ export function AuthProvider({ children }) {
     currentUser,
     signUp,
     login,
-    logOut
+    logOut,
+    forgotPassword
   }
 
   return (

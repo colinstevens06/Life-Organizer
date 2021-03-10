@@ -26,14 +26,12 @@ function Main() {
   }
 
   const updateAllNotesObject = () => {
-
     if (browserRefresh) {
       setBrowserRefresh(false)
     } else {
       setBrowserRefresh(true)
     }
   }
-
 
   return (
     <div>
@@ -44,7 +42,6 @@ function Main() {
             updateAllNotesObject={updateAllNotesObject}
           />
           {
-
             (userNotes.length >= 1) ? (
               <FilterableData
                 userNotes={userNotes}

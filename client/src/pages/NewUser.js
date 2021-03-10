@@ -13,7 +13,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
 
   // importing the signUp function from my auth section
-  const { signUp } = useAuth()
+  const { signUp, forgotPassword } = useAuth()
   const history = useHistory()
 
 
@@ -38,12 +38,9 @@ export default function Login() {
     }
 
     history.push("/")
-
-
   }
 
   const closeAlert = () => {
-
     setShowError(false)
     setError('')
   }
