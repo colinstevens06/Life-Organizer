@@ -4,12 +4,16 @@
   padding: 20px 0;  
 }
 
-
 .row_notes-list {
   display: grid; 
   grid-template-columns: 50% 25% 25%;
   gap: 10px;
+  color: inherit;
+  &:hover {
+    color: inherit;
+  }
 }
+
 
 .header_notes-list {
   font-size: 1.75rem;
@@ -17,11 +21,24 @@
   padding-left: 15px;
 }
 
+.sortable-headers__border {
+  margin-top: 15px;
+  border-top: 1px solid #b9b9b9;
+  border-bottom: 1px solid #b9b9b9;
+  margin-bottom: 20px;
+}
+
 .header__sortable-lists {
   font-size: 1.5rem;
   color: #474747;
+  padding: 8px 0;
   padding-left: 15px;
-
+  transition: .5s;
+  &:hover {
+    cursor: pointer;
+    transition: .5s;
+    background-color: $primaryColorLight;
+  }
 }
 
 .notes-list-results {

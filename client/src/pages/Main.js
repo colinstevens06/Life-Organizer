@@ -5,26 +5,86 @@ import { useAuth } from "../context/AuthContext"
 // Components
 import CreateNoteBtn from '../components/CreateNoteBtn'
 import FilterableData from '../components/main/FilterableData'
+import Sorter from "../utils/sorting";
 
 function Main() {
-  const [userNotes, setUserNotes] = useState()
+
+  // INSTANCES OF NOTES
+  const [allUserNotes, setAllUserNotes] = useState()
+  const [sortedUserNotes, setSortedUserNotes] = useState()
+
+  // browser refresh
   const [browserRefresh, setBrowserRefresh] = useState(false)
+
+  // sorting the data
+  const [sortTypeValue, setSortTypeValue] = useState()
+  const [sortAscending, setSortAscending] = useState(false)
+
+  // this will show the column and the direction - example: "name-ascending"
+  const [sortTypeOrderValue, setSortTypeOrderValue] = useState()
+
+  // authentication
   const { currentUser } = useAuth()
+
 
 
   useEffect(() => {
     getUserNotes(currentUser.uid)
   }, [currentUser, browserRefresh])
 
+  // this useEffect watches for the sortTypeValue
+  useEffect(() => {
+    if (allUserNotes) {
+
+      if (sortTypeValue === "name" && sortAscending === true) {
+
+        let sortedNotes = Sorter.aToZName(allUserNotes)
+        setSortedUserNotes(sortedNotes)
+      } else if (sortTypeValue === "name" && sortAscending === false) {
+        let sortedNotes = Sorter.zToAName(allUserNotes)
+        setSortedUserNotes(sortedNotes)
+
+      } else if (sortTypeValue === "category" && sortAscending === true) {
+        let sortedNotes = Sorter.aToZCategory(allUserNotes)
+        setSortedUserNotes(sortedNotes)
+
+      } else if (sortTypeValue === "category" && sortAscending === false) {
+        let sortedNotes = Sorter.zToACategory(allUserNotes)
+        setSortedUserNotes(sortedNotes)
+
+      } else if (sortTypeValue === "date" && sortAscending === false) {
+        let sortedNotes = Sorter.aToZUpDate(allUserNotes)
+        setSortedUserNotes(sortedNotes)
+
+      } else {
+        let sortedNotes = Sorter.zToAUpDate(allUserNotes)
+        setSortedUserNotes(sortedNotes)
+      }
+
+    }
+
+  }, [allUserNotes, sortAscending, sortTypeValue])
+
+  // this useEffect updates the data
+  useEffect(() => {
+    let keyWord = Sorter.keyWord(sortTypeValue, sortAscending)
+    setSortTypeOrderValue(keyWord)
+
+  }, [sortAscending, sortTypeValue, sortedUserNotes])
+
+
+
   // this is good to go and important
   const getUserNotes = (id) => {
     API.getUser(id)
       .then(res => {
-        setUserNotes(res.data)
+        setAllUserNotes(res.data)
+        setSortedUserNotes(res.data)
       })
       .catch(err => console.log(err))
   }
 
+  // this listens in case a new note is added... if a new note is added, we want to refresh the browser w/ a new API call because we want the note added to the DB w/ a new ID - I'm using the ID as the unique identifier in HTML routing
   const updateAllNotesObject = () => {
     if (browserRefresh) {
       setBrowserRefresh(false)
@@ -33,18 +93,44 @@ function Main() {
     }
   }
 
+
+  // when a user clicks a sortable column, this listens for that click and tells us which button they clicked.
+  const handleSortTypeValueChange = (input) => {
+
+    if (sortTypeValue !== input) {
+      setSortAscending(true)
+    } else {
+
+      if (sortAscending === false) {
+        setSortAscending(true)
+      } else {
+        setSortAscending(false)
+      }
+    }
+
+    setSortTypeValue(input)
+
+
+  }
+
+
+
+
+
   return (
     <div>
-      {userNotes &&
+      {sortedUserNotes &&
         <>
           <CreateNoteBtn
             uid={currentUser.uid}
             updateAllNotesObject={updateAllNotesObject}
           />
           {
-            (userNotes.length >= 1) ? (
+            (sortedUserNotes.length >= 1) ? (
               <FilterableData
-                userNotes={userNotes}
+                handleSortTypeValueChange={handleSortTypeValueChange}
+                userNotes={sortedUserNotes}
+                sortClass={sortTypeOrderValue}
               />
             ) : (
               <div className="no-notes-container">

@@ -103,6 +103,11 @@ a:-webkit-any-link {
   -ms-grid-columns: 50% 25% 25%;
       grid-template-columns: 50% 25% 25%;
   gap: 10px;
+  color: inherit;
+}
+
+.row_notes-list:hover {
+  color: inherit;
 }
 
 .header_notes-list {
@@ -111,10 +116,27 @@ a:-webkit-any-link {
   padding-left: 15px;
 }
 
+.sortable-headers__border {
+  margin-top: 15px;
+  border-top: 1px solid #b9b9b9;
+  border-bottom: 1px solid #b9b9b9;
+  margin-bottom: 20px;
+}
+
 .header__sortable-lists {
   font-size: 1.5rem;
   color: #474747;
+  padding: 8px 0;
   padding-left: 15px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.header__sortable-lists:hover {
+  cursor: pointer;
+  -webkit-transition: .5s;
+  transition: .5s;
+  background-color: #ffb5c1;
 }
 
 .notes-list-results {
@@ -324,6 +346,7 @@ a:-webkit-any-link {
 }
 
 .container__update-buttons a {
+  color: inherit;
   padding: 6px 8px;
   width: 100px;
   text-align: center;
@@ -333,6 +356,7 @@ a:-webkit-any-link {
 
 .container__update-buttons a:hover {
   cursor: pointer;
+  color: inherit;
   -webkit-transition: .5s;
   transition: .5s;
   background-color: #ffb5c1;
@@ -360,8 +384,10 @@ a:-webkit-any-link {
 }
 
 .row__left-column-list {
+  color: inherit;
   width: 100%;
   padding: 6px 0px;
+  padding-left: 6px;
   font-size: 0.8rem;
   -webkit-transition: .5s;
   transition: .5s;
@@ -370,6 +396,7 @@ a:-webkit-any-link {
 
 .row__left-column-list:hover {
   cursor: pointer;
+  color: inherit;
   -webkit-transition: .5s;
   transition: .5s;
   background-color: #ffb5c1;
@@ -585,6 +612,10 @@ a:-webkit-any-link {
 .nav-brand-header {
   margin-left: 15px;
   font-size: 1.65em;
+}
+
+.nav-brand-header:hover {
+  color: #ffffff;
 }
 
 .right-side_nav-bar {

@@ -38,7 +38,7 @@ export default function SingleNote() {
   }, [currentUser, id, browserRefresh])
 
 
-  const getUserNotes = (id) => {
+  function getUserNotes(id) {
     API.getUser(id)
       .then(res => {
         setUserNotes(res.data)

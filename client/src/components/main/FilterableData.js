@@ -6,15 +6,14 @@ function FilterableData(props) {
   return (
     <div className="container_notes-list">
       <div className="header_notes-list">Your Notes</div>
-      <hr />
-      <div className="row_notes-list">
-        <div className="header__sortable-lists">Name</div>
-        <div className="header__sortable-lists">Last Modified</div>
-        <div className="header__sortable-lists">Category</div>
+      <div className="row_notes-list sortable-headers__border">
+        <div className="header__sortable-lists" onClick={() => props.handleSortTypeValueChange("name")}>Name</div>
+        <div className="header__sortable-lists" onClick={() => props.handleSortTypeValueChange("date")}>Last Modified</div>
+        <div className="header__sortable-lists" onClick={() => props.handleSortTypeValueChange("category")}>Category</div>
       </div>
-      <hr style={{ marginBlockEnd: 0 }} />
 
-      {props.userNotes &&
+      {
+        props.userNotes &&
         props.userNotes.map(note => (
           <DataRow
             key={note._id}
@@ -26,12 +25,9 @@ function FilterableData(props) {
         ))
       }
 
-
-    </div>
+    </div >
   )
 
 }
-
-
 
 export default FilterableData

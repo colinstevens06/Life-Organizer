@@ -13,7 +13,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
 
   // importing the signUp function from my auth section
-  const { signUp, forgotPassword } = useAuth()
+  const { signUp } = useAuth()
   const history = useHistory()
 
 
