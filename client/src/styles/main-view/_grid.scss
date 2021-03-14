@@ -83,11 +83,13 @@
   }
 
   .row_notes-list {
-    grid-template-columns: 46% 29% 25%;
+    grid-template-columns: 46% 29% 20%;
     gap: 15px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    div {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 
   .header_notes-list {
