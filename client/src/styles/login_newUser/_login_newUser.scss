@@ -4,7 +4,8 @@
   min-height: 200px;
   display: flex;
   flex-direction: column;
-  background-color: $primaryColorLight;
+  background-color: #ffffff;
+  border: 2px solid #c8c8c8;
   margin-right: auto;
   margin-left: auto;
   margin-top: 10%;
@@ -46,8 +47,8 @@
     font-family: $primaryFontFamily;
     text-align: center;
     align-self: center;
-    background-color: rgba(255, 255, 255, 0.05);
-    color: rgba(0, 0, 0, .85);
+    background-color: $primaryColor;
+    color: rgba(255, 255, 255, 0.95);
     border-radius: 5px;
     font-size: 1.25rem;
     border-width: 2px;
@@ -57,8 +58,8 @@
     &:hover {
       cursor: pointer;
       transition: .5s;
-      background-color: $primaryColor;
-      color: rgba(255, 255, 255, 0.95) !important;
+      background-color: #ffffff;
+      color: $primaryColor !important;
       border-color: $primaryColorDark;
     }
   }
@@ -81,13 +82,13 @@
 }
 
 .text_forgot-password {
-  color: $primaryColorDark;
+  color: $primaryColor;
   text-align: center;
   padding: 12px 8px;
   margin: 6px 0;
   transition: .5s;
   &:hover {
-    color: $primaryColor;
+    color: $primaryColorDark;
     background-color: rgba(255, 255, 255, 0.25);
     transition: .5s;
   }
