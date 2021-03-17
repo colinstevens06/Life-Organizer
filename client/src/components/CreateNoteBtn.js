@@ -66,6 +66,7 @@ export default function CreateNoteBtn(props) {
         isOpen={modalIsOpen}
         style={customStyles}
         ariaHideApp={false}
+      // animation={true}
       >
         <div className="container_modal">
           <form>

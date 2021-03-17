@@ -8,6 +8,20 @@ a:-webkit-any-link {
   text-decoration: none !important;
 }
 
+.ReactModal__Overlay {
+  opacity: 0;
+  -webkit-transition: opacity 600ms ease-in-out;
+  transition: opacity 600ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
 .add-new-note__btn {
   color: #ffffff;
   background-color: #E00045;
@@ -592,7 +606,6 @@ a:-webkit-any-link {
   background-color: #E00045;
   color: white;
   position: relative;
-  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
